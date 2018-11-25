@@ -1,0 +1,4 @@
+*.pyc
+tmp.html
+/http_cache
+/log
