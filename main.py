@@ -37,7 +37,7 @@ def main():
         with open('tmp.html', 'wb') as f:
             f.write(c)
 
-        m = re.search(r'<span\b[^>]*class="maker_name"><a\b.*?>(.*?)<', c)
+        m = re.search(r'<span\b[^>]*class="maker_name">\s*<a\b.*?>(.*?)<', c, re.S)
         maker = m and m.group(1) or '?'
 
         m = re.search(r'<th>販売日</th>\s*<td><a.*?/year/(\d+)/mon/(\d+)/day/(\d+)/', c, re.S)
@@ -49,7 +49,7 @@ def main():
         else:
             pub_time = '?'
 
-        m = re.search(r'<h1\b[^>]*\bid="work_name">\s*<a\b.*?>(.*?)<', c, re.S)
+        m = re.search(r'<h1\b[^>]*\bid="work_name">\s*(.*?)<', c, re.S)
         title = m and m.group(1) or '?'
 
         return {
